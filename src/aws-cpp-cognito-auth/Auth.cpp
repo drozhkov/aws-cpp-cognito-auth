@@ -79,7 +79,12 @@ Aws::Auth::AWSCredentials CognitoAuth::Authenticate(
 
 	auto now = time( nullptr );
 	struct tm tm;
-	// gmtime_s( &tm, &now );
+
+#ifdef __GNUC__
+	gmtime_r( &now, &tm );
+#else
+	gmtime_s( &tm, &now );
+#endif
 
 	std::stringstream ss;
 	ss << std::put_time( &tm, (std::string( "%a %b" ) + (tm.tm_mday > 9 ? " " : "") + "%e %H:%M:%S UTC %Y").c_str() );

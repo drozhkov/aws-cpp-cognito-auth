@@ -105,7 +105,7 @@ namespace awsx {
 
 		static std::vector<uint8_t> PadLeftZero( const std::vector<uint8_t> & v )
 		{
-			if (v.front() > 0x69) {
+			if (v.front() > 0x7f) {
 				std::vector<uint8_t> result( v );
 				result.insert( result.begin(), 0 );
 

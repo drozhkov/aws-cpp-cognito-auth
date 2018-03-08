@@ -17,3 +17,4 @@ src/aws-cpp-cognito-auth/CMakeCache.txt
 /src/aws-cpp-cognito-auth-demo/Makefile
 src/aws-cpp-cognito-auth/libawspp.a
 src/aws-cpp-cognito-auth/libaws-cpp-cognito-auth.a
+.vs

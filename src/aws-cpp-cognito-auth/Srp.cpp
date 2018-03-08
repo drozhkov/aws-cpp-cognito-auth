@@ -100,9 +100,10 @@ void Srp::GenerateKey(
 	Helpers::HexToBinary( saltIn, sSaltIn );
 
 	std::vector<uint8_t> x_array( saltIn.size() + idDigest.size() );
+	x_array.assign( saltIn.begin(), saltIn.end() );
+	x_array.insert( x_array.end(), idDigest.begin(), idDigest.end() );
+
 	std::vector<uint8_t> x_digest;
-	std::copy( saltIn.begin(), saltIn.end(), x_array.begin() );
-	std::copy( idDigest.begin(), idDigest.end(), x_array.begin() + saltIn.size() );
 	d.Sha256( x_digest, x_array );
 	x_digest = Helpers::PadLeftZero( x_digest );
 
@@ -162,11 +163,10 @@ std::string Srp::GeneratePasswordClaim(
 	GenerateKey( key, userPoolId + username + ":" + password, salt, sB );
 
 	std::vector<uint8_t> content( userPoolId.size() + username.size() + secretBlock.size() + timestamp.size() );
-
-	std::copy( userPoolId.begin(), userPoolId.end(), content.begin() );
-	std::copy( username.begin(), username.end(), content.begin() + userPoolId.size() );
-	std::copy( secretBlock.begin(), secretBlock.end(), content.begin() + userPoolId.size() + username.size() );
-	std::copy( timestamp.begin(), timestamp.end(), content.begin() + userPoolId.size() + username.size() + secretBlock.size() );
+	content.assign( userPoolId.begin(), userPoolId.end() );
+	content.insert( content.end(), username.begin(), username.end() );
+	content.insert( content.end(), secretBlock.begin(), secretBlock.end() );
+	content.insert( content.end(), timestamp.begin(), timestamp.end() );
 
 	std::vector<uint8_t> hmac( 32 );
 	Hmac::ComputeSha256( hmac, key, content );
