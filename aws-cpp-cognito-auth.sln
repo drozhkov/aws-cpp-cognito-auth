@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aws-cpp-cognito-auth", "src\aws-cpp-cognito-auth\aws-cpp-cognito-auth.vcxproj", "{6CD05995-C164-49FA-8882-42D2E7F5F87B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "aws-cpp-cognito-auth-demo", "src\aws-cpp-cognito-auth-demo\aws-cpp-cognito-auth-demo.vcxproj", "{137CB262-AE79-4A7B-91FD-70EA47D79002}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CD05995-C164-49FA-8882-42D2E7F5F87B}.Debug|x64.ActiveCfg = Debug|x64
+		{6CD05995-C164-49FA-8882-42D2E7F5F87B}.Debug|x64.Build.0 = Debug|x64
+		{6CD05995-C164-49FA-8882-42D2E7F5F87B}.Debug|x86.ActiveCfg = Debug|Win32
+		{6CD05995-C164-49FA-8882-42D2E7F5F87B}.Debug|x86.Build.0 = Debug|Win32
+		{6CD05995-C164-49FA-8882-42D2E7F5F87B}.Release|x64.ActiveCfg = Release|x64
+		{6CD05995-C164-49FA-8882-42D2E7F5F87B}.Release|x64.Build.0 = Release|x64
+		{6CD05995-C164-49FA-8882-42D2E7F5F87B}.Release|x86.ActiveCfg = Release|Win32
+		{6CD05995-C164-49FA-8882-42D2E7F5F87B}.Release|x86.Build.0 = Release|Win32
+		{137CB262-AE79-4A7B-91FD-70EA47D79002}.Debug|x64.ActiveCfg = Debug|x64
+		{137CB262-AE79-4A7B-91FD-70EA47D79002}.Debug|x64.Build.0 = Debug|x64
+		{137CB262-AE79-4A7B-91FD-70EA47D79002}.Debug|x86.ActiveCfg = Debug|Win32
+		{137CB262-AE79-4A7B-91FD-70EA47D79002}.Debug|x86.Build.0 = Debug|Win32
+		{137CB262-AE79-4A7B-91FD-70EA47D79002}.Release|x64.ActiveCfg = Release|x64
+		{137CB262-AE79-4A7B-91FD-70EA47D79002}.Release|x64.Build.0 = Release|x64
+		{137CB262-AE79-4A7B-91FD-70EA47D79002}.Release|x86.ActiveCfg = Release|Win32
+		{137CB262-AE79-4A7B-91FD-70EA47D79002}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {973EC766-EC05-408E-96DF-2A595847618E}
+	EndGlobalSection
+EndGlobal

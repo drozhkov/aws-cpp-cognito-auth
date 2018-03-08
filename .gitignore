@@ -1,0 +1,4 @@
+/packages
+/src/aws-cpp-cognito-auth/x64
+/src/aws-cpp-cognito-auth-demo/x64
+src/aws-cpp-cognito-auth-demo/credentials.txt
