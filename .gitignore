@@ -6,3 +6,14 @@ src/aws-cpp-cognito-auth/cmake_install.cmake
 src/aws-cpp-cognito-auth/CMakeFiles
 src/aws-cpp-cognito-auth/Makefile
 src/aws-cpp-cognito-auth/CMakeCache.txt
+/cmake_install.cmake
+/CMakeFiles
+/bin/Linux-x86_64/aws-cpp-cognito-auth-demo
+/lib/Linux-x86_64/libaws-cpp-cognito-auth.a
+/CMakeCache.txt
+/Makefile
+/src/aws-cpp-cognito-auth-demo/cmake_install.cmake
+/src/aws-cpp-cognito-auth-demo/CMakeFiles
+/src/aws-cpp-cognito-auth-demo/Makefile
+src/aws-cpp-cognito-auth/libawspp.a
+src/aws-cpp-cognito-auth/libaws-cpp-cognito-auth.a
