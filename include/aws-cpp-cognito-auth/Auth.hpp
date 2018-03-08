@@ -43,7 +43,7 @@ namespace awsx {
 		template <class TException, typename TResult> void ThrowIf( TResult & result )
 		{
 			if (!result.IsSuccess()) {
-				throw TException( result.GetError().GetExceptionName() + ": " + result.GetError().GetMessage() );
+				throw TException( std::string( result.GetError().GetExceptionName().c_str() ) + ": " + result.GetError().GetMessage().c_str() );
 			}
 		}
 
@@ -54,10 +54,10 @@ namespace awsx {
 		{
 		}
 
-		Aws::Auth::AWSCredentials Authenticate( 
-			const std::string & username, 
-			const std::string & password, 
-			const std::string & userPoolId, 
+		Aws::Auth::AWSCredentials Authenticate(
+			const std::string & username,
+			const std::string & password,
+			const std::string & userPoolId,
 			const std::string & identityPoolId );
 	};
 

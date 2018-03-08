@@ -79,7 +79,7 @@ Aws::Auth::AWSCredentials CognitoAuth::Authenticate(
 
 	auto now = time( nullptr );
 	struct tm tm;
-	gmtime_s( &tm, &now );
+	// gmtime_s( &tm, &now );
 
 	std::stringstream ss;
 	ss << std::put_time( &tm, (std::string( "%a %b" ) + (tm.tm_mday > 9 ? " " : "") + "%e %H:%M:%S UTC %Y").c_str() );
@@ -94,9 +94,9 @@ Aws::Auth::AWSCredentials CognitoAuth::Authenticate(
 		userPoolId,
 		username,
 		password,
-		salt,
-		srpB,
-		secretBlock,
+		salt.c_str(),
+		srpB.c_str(),
+		secretBlock.c_str(),
 		timestamp );
 
 	Aws::CognitoIdentityProvider::Model::RespondToAuthChallengeRequest challengeRequest;

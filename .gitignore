@@ -2,3 +2,7 @@
 /src/aws-cpp-cognito-auth/x64
 /src/aws-cpp-cognito-auth-demo/x64
 src/aws-cpp-cognito-auth-demo/credentials.txt
+src/aws-cpp-cognito-auth/cmake_install.cmake
+src/aws-cpp-cognito-auth/CMakeFiles
+src/aws-cpp-cognito-auth/Makefile
+src/aws-cpp-cognito-auth/CMakeCache.txt
