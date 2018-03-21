@@ -44,6 +44,8 @@ namespace awsx {
 		{
 		}
 
+		BigNumberContext( const BigNumberContext & ) = delete;
+
 		virtual ~BigNumberContext()
 		{
 			BN_CTX_free( m_context );
@@ -74,6 +76,8 @@ namespace awsx {
 		{
 		}
 
+		BigNumberString( const BigNumberString & ) = delete;
+
 		virtual ~BigNumberString()
 		{
 			free();
@@ -100,6 +104,8 @@ namespace awsx {
 			: m_value( BN_new() )
 		{
 		}
+
+		BigNumber( const BigNumber & ) = delete;
 
 		virtual ~BigNumber()
 		{

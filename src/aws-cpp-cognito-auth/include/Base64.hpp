@@ -44,6 +44,8 @@ namespace awsx {
 		{
 		}
 
+		BasicIo( const BasicIo & ) = delete;
+
 		virtual ~BasicIo()
 		{
 		}
@@ -94,6 +96,8 @@ namespace awsx {
 			: BasicIo( BIO_new( BIO_f_base64() ) )
 		{
 		}
+
+		Base64( const Base64 & ) = delete;
 
 		~Base64() override
 		{
