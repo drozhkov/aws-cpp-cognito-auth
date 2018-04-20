@@ -63,6 +63,8 @@ namespace awsx {
 			m_context = EVP_MD_CTX_create();
 		}
 
+		Digest( const Digest & ) = delete;
+
 		virtual ~Digest()
 		{
 			free();
@@ -88,6 +90,8 @@ namespace awsx {
 		{
 			m_context = EVP_PKEY_CTX_new_id( EVP_PKEY_HKDF, NULL );
 		}
+
+		Key( const Key & ) = delete;
 
 		virtual ~Key()
 		{
