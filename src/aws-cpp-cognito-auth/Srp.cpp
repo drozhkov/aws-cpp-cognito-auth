@@ -97,7 +97,7 @@ void Srp::GenerateKey(
 	d.Sha256( idDigest, id );
 
 	std::vector<uint8_t> saltIn;
-	Helpers::HexToBinary( saltIn, sSaltIn );
+	Helpers::HexToBinary( saltIn, Helpers::PadLeftZero( sSaltIn ) );
 
 	std::vector<uint8_t> x_array( saltIn.size() + idDigest.size() );
 	x_array.assign( saltIn.begin(), saltIn.end() );
