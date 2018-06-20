@@ -100,24 +100,20 @@ namespace awsx {
 			}
 		}
 
-		void HkdfSha256(
-			std::vector<uint8_t> & out,
-			const std::vector<uint8_t> & salt,
-			const std::vector<uint8_t> & secret,
-			const std::vector<uint8_t> & label )
-		{
-			EVP_PKEY_derive_init( m_context );
-			EVP_PKEY_CTX_set_hkdf_md( m_context, EVP_sha256() );
-			EVP_PKEY_CTX_set1_hkdf_salt( m_context, salt.data(), static_cast<int>(salt.size()) );
-			EVP_PKEY_CTX_set1_hkdf_key( m_context, secret.data(), static_cast<int>(secret.size()) );
-			EVP_PKEY_CTX_add1_hkdf_info( m_context, label.data(), static_cast<int>(label.size()) );
-
-			size_t keyLen = 16;
-			EVP_PKEY_derive( m_context, NULL, &keyLen );
-
-			out.resize( keyLen );
-			EVP_PKEY_derive( m_context, out.data(), &keyLen );
-		}
+        void HkdfSha256(std::vector<unsigned char> &output,
+            const std::vector<unsigned char> &salt,
+            const std::vector<unsigned char> &secret,
+            const std::vector<unsigned char> &label)
+        {
+            output.resize(16);
+            size_t outlen = output.size();
+            EVP_PKEY_derive_init(m_context);
+            EVP_PKEY_CTX_set_hkdf_md(m_context, EVP_sha256());
+            EVP_PKEY_CTX_set1_hkdf_salt(m_context, salt.data(), static_cast<int>(salt.size()));
+            EVP_PKEY_CTX_set1_hkdf_key(m_context, secret.data(), static_cast<int>(secret.size()));
+            EVP_PKEY_CTX_add1_hkdf_info(m_context, label.data(), static_cast<int>(label.size()));
+            EVP_PKEY_derive(m_context, output.data(), &outlen);
+        }
 	};
 
 	class Hmac {
