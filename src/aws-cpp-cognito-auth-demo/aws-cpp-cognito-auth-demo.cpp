@@ -24,6 +24,39 @@
 
 #include "stdafx.h"
 
+void authDemo(
+	const std::string& regionId,
+	const std::string& clientId,
+	const std::string& username,
+	const std::string& password,
+	const std::string& userPoolId,
+	const std::string& identityPoolId )
+{
+	awsx::CognitoAuth auth( regionId, clientId );
+	auto creds = auth.Authenticate( username, password, userPoolId, identityPoolId );
+
+	if (!creds.GetAWSAccessKeyId().empty()) {
+		std::cout << "access key = " << creds.GetAWSAccessKeyId() << std::endl;
+	}
+}
+
+void authDemoWithUserPool(
+	const std::string& regionId,
+	const std::string& clientId,
+	const std::string& username,
+	const std::string& password,
+	const std::string& userPoolId )
+{
+	awsx::CognitoAuth auth( regionId, clientId );
+	auto creds = auth.AuthenticateWithUserPool( username, password, userPoolId );
+
+	if (!creds.GetAccessToken().empty()) {
+		std::cout << "access token = " << creds.GetAccessToken() << std::endl;
+		std::cout << "id token = " << creds.GetIdToken() << std::endl;
+		std::cout << "refresh token = " << creds.GetRefreshToken() << std::endl;
+		std::cout << "expires in = " << creds.GetExpiresIn() << std::endl;
+	}
+}
 
 int main()
 {
@@ -38,12 +71,9 @@ int main()
 		std::string userPoolId = "";		// without region
 		std::string identityPoolId = "";	// without region
 
-		awsx::CognitoAuth auth( regionId, clientId );
-		auto creds = auth.Authenticate( username, password, userPoolId, identityPoolId );
-
-		if (!creds.GetAWSAccessKeyId().empty()) {
-			std::cout << "access key = " << creds.GetAWSAccessKeyId() << std::endl;
-		}
+		authDemo( regionId, clientId, username, password, userPoolId, identityPoolId );
+		// Alternate usage
+		//authDemoWithUserPool( regionId, clientId, username, password, userPoolId );
 	}
 	catch (const std::exception & x) {
 		std::cerr << x.what() << std::endl;
