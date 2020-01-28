@@ -94,10 +94,11 @@ Aws::Auth::AWSCredentials CognitoAuth::Authenticate(
 	const Aws::String salt = challengeParameters["SALT"];
 	const Aws::String srpB = challengeParameters["SRP_B"];
 	const Aws::String secretBlock = challengeParameters["SECRET_BLOCK"];
+	const Aws::String userIdForSrp  = challengeParameters["USER_ID_FOR_SRP"];
 
 	auto claim = srp.GeneratePasswordClaim(
 		userPoolId,
-		username,
+		userIdForSrp,
 		password,
 		salt.c_str(),
 		srpB.c_str(),
