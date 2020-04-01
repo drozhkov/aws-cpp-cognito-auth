@@ -87,11 +87,12 @@ void Srp::GenerateKey(
 {
 	Digest d;
 
-	std::vector<uint8_t> salt;
 	std::vector<uint8_t> ab;
 	Helpers::HexToBinary( ab, Helpers::PadLeftZero( m_A.get() ) + Helpers::PadLeftZero( sB ) );
-	d.Sha256( salt, ab );
-	salt = Helpers::PadLeftZero( salt );
+
+	std::vector<uint8_t> ab_digest;
+	d.Sha256( ab_digest, ab );
+	ab_digest = Helpers::PadLeftZero( ab_digest );
 
 	std::vector<uint8_t> idDigest;
 	d.Sha256( idDigest, id );
@@ -112,7 +113,7 @@ void Srp::GenerateKey(
 	BigNumber B;
 
 	x.fromBin( x_digest );
-	u.fromBin( salt );
+	u.fromBin( ab_digest );
 	B.fromHex( sB );
 
 	BigNumber g_mod_xn;
@@ -135,10 +136,16 @@ void Srp::GenerateKey(
 	b_sub_modpow.modExp( b_sub, a_add, m_N, context );
 	S.mod( b_sub_modpow, m_N, context );
 
-	BigNumberString sS;
-	S.toHex( sS );
+	BigNumberString u_str;
+	u.toHex(u_str);
+	std::vector<uint8_t> salt;
+	Helpers::HexToBinary( salt, u_str.get() );
+	salt = Helpers::PadLeftZero( salt );
+
+	BigNumberString S_str;
+	S.toHex( S_str );
 	std::vector<uint8_t> secret;
-	Helpers::HexToBinary( secret, sS.get() );
+	Helpers::HexToBinary( secret, S_str.get() );
 	secret = Helpers::PadLeftZero( secret );
 
 	const std::string labelS = "Caldera Derived Key";
