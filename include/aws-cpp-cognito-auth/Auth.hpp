@@ -35,6 +35,28 @@
 
 namespace awsx {
 
+	class CognitoTokens {
+	protected:
+		std::string m_accessToken;
+		std::string m_idToken;
+		std::string m_refreshToken;
+		int m_expiresIn;
+
+	public:
+		CognitoTokens(std::string& accessToken, std::string& idToken, std::string& refreshToken, int expiresIn)
+			: m_accessToken(accessToken)
+			, m_idToken(idToken)
+			, m_refreshToken(refreshToken)
+			, m_expiresIn(expiresIn)
+		{
+		}
+
+		std::string& GetAccessToken() { return m_accessToken; }
+		std::string& GetIdToken() { return m_idToken; }
+		std::string& GetRefreshToken() { return m_refreshToken; }
+		int GetExpiresIn() { return m_expiresIn; }
+	};
+
 	class CognitoAuth {
 	protected:
 		std::string m_clientId;
@@ -47,7 +69,13 @@ namespace awsx {
 			}
 		}
 
-	public:
+		CognitoTokens AuthenticateWithUserPoolInternal(
+			Aws::Client::ClientConfiguration& clientConfig,
+			const std::string& username,
+			const std::string& userPoolId,
+			const std::string& password);
+
+    public:
 		CognitoAuth( const std::string & regionId, const std::string & clientId )
 			: m_regionId( regionId )
 			, m_clientId( clientId )
@@ -59,6 +87,11 @@ namespace awsx {
 			const std::string & password,
 			const std::string & userPoolId,
 			const std::string & identityPoolId );
+
+		CognitoTokens AuthenticateWithUserPool(
+			const std::string& username,
+			const std::string& password,
+			const std::string& userPoolId);
 	};
 
 }

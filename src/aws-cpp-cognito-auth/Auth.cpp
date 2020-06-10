@@ -48,17 +48,12 @@
 using namespace awsx;
 
 
-Aws::Auth::AWSCredentials CognitoAuth::Authenticate(
-	const std::string & username,
-	const std::string & password,
-	const std::string & userPoolId,
-	const std::string & identityPoolId )
+CognitoTokens awsx::CognitoAuth::AuthenticateWithUserPoolInternal(
+	Aws::Client::ClientConfiguration& clientConfig,
+	const std::string& username,
+	const std::string& userPoolId,
+	const std::string& password )
 {
-	Aws::Auth::AWSCredentials result;
-
-	Aws::Client::ClientConfiguration clientConfig;
-	clientConfig.region = Aws::String( m_regionId.c_str() );
-
 	Srp srp;
 
 	Aws::Map<Aws::String, Aws::String> authParameters;
@@ -116,9 +111,27 @@ Aws::Auth::AWSCredentials CognitoAuth::Authenticate(
 	auto challengeResult = cipClient.RespondToAuthChallenge( challengeRequest );
 	ThrowIf<Exception>( challengeResult );
 
-	auto token = challengeResult.GetResult().GetAuthenticationResult().GetIdToken().c_str();
+	Aws::CognitoIdentityProvider::Model::AuthenticationResultType result = challengeResult.GetResult().GetAuthenticationResult();
 
-	std::string login = ("cognito-idp." + m_regionId + ".amazonaws.com/" + m_regionId + "_" + userPoolId);
+	return CognitoTokens(
+		std::string(result.GetAccessToken().c_str()),
+		std::string(result.GetIdToken().c_str()),
+		std::string(result.GetRefreshToken().c_str()),
+		result.GetExpiresIn());
+}
+
+Aws::Auth::AWSCredentials CognitoAuth::Authenticate(
+	const std::string & username,
+	const std::string & password,
+	const std::string & userPoolId,
+	const std::string & identityPoolId )
+{
+	Aws::Client::ClientConfiguration clientConfig;
+	clientConfig.region = Aws::String( m_regionId.c_str() );
+
+	std::string token = AuthenticateWithUserPoolInternal( clientConfig, username, userPoolId, password ).GetIdToken();
+
+	std::string login = ( "cognito-idp." + m_regionId + ".amazonaws.com/" + m_regionId + "_" + userPoolId );
 
 	Aws::CognitoIdentity::CognitoIdentityClient ciClient( clientConfig );
 
@@ -138,7 +151,17 @@ Aws::Auth::AWSCredentials CognitoAuth::Authenticate(
 	ThrowIf<Exception>( credForIdResult );
 
 	auto & cred = credForIdResult.GetResult().GetCredentials();
-	result = Aws::Auth::AWSCredentials( cred.GetAccessKeyId(), cred.GetSecretKey(), cred.GetSessionToken() );
 
-	return result;
+	return Aws::Auth::AWSCredentials( cred.GetAccessKeyId(), cred.GetSecretKey(), cred.GetSessionToken() );
+}
+
+CognitoTokens awsx::CognitoAuth::AuthenticateWithUserPool(
+	const std::string& username,
+	const std::string& password,
+	const std::string& userPoolId )
+{
+	Aws::Client::ClientConfiguration clientConfig;
+	clientConfig.region = Aws::String( m_regionId.c_str() );
+
+	return AuthenticateWithUserPoolInternal( clientConfig, username, userPoolId, password );
 }
