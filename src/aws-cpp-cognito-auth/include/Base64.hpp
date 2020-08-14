@@ -1,26 +1,26 @@
 /*
-* MIT License
-*
-* Copyright (c) 2018 Denis Rozhkov <denis@rozhkoff.com>
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in all
-* copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-* SOFTWARE.
-*/
+ * MIT License
+ *
+ * Copyright (c) 2018 Denis Rozhkov <denis@rozhkoff.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 
 #ifndef __AWS_CPP_COGNITO_AUTH_BASE64_H
 #define __AWS_CPP_COGNITO_AUTH_BASE64_H
@@ -62,7 +62,7 @@ namespace awsx {
 
 		void write( const std::vector<uint8_t> data )
 		{
-			BIO_write( m_bio, data.data(), static_cast<int>(data.size()) );
+			BIO_write( m_bio, data.data(), static_cast<int>( data.size() ) );
 		}
 
 		void flush()
@@ -80,7 +80,9 @@ namespace awsx {
 
 		void read( std::vector<uint8_t> & out )
 		{
-			auto len = BIO_read( m_bio, out.data(), static_cast<int>(out.size()) );
+			auto len
+				= BIO_read( m_bio, out.data(), static_cast<int>( out.size() ) );
+
 			out.resize( len );
 		}
 
@@ -121,7 +123,9 @@ namespace awsx {
 		{
 			setFlags( BIO_FLAGS_BASE64_NO_NL );
 
-			BasicIo source( BIO_new_mem_buf( encoded.c_str(), static_cast<int>(encoded.length() + 1) ) );
+			BasicIo source( BIO_new_mem_buf(
+				encoded.c_str(), static_cast<int>( encoded.length() + 1 ) ) );
+
 			push( source );
 
 			const size_t maxlen = encoded.length() / 4 * 3 + 1;
@@ -130,7 +134,7 @@ namespace awsx {
 		}
 	};
 
-}
+} // namespace awsx
 
 
 #endif

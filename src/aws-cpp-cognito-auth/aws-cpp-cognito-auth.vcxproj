@@ -30,26 +30,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -156,9 +156,6 @@
     <ClCompile Include="Srp.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="..\..\include\aws-cpp-cognito-auth\Auth.hpp" />
     <ClInclude Include="..\..\include\aws-cpp-cognito-auth\Exception.hpp" />
     <ClInclude Include="include\Base64.hpp" />
@@ -167,26 +164,29 @@
     <ClInclude Include="include\Crypt.hpp" />
     <ClInclude Include="include\Srp.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="..\..\packages\AWSSDKCPP-CognitoIdentity.redist.1.4.20140630.10\build\native\AWSSDKCPP-CognitoIdentity.redist.targets" Condition="Exists('..\..\packages\AWSSDKCPP-CognitoIdentity.redist.1.4.20140630.10\build\native\AWSSDKCPP-CognitoIdentity.redist.targets')" />
-    <Import Project="..\..\packages\AWSSDKCPP-Core.redist.1.4.10\build\native\AWSSDKCPP-Core.redist.targets" Condition="Exists('..\..\packages\AWSSDKCPP-Core.redist.1.4.10\build\native\AWSSDKCPP-Core.redist.targets')" />
-    <Import Project="..\..\packages\AWSSDKCPP-Core.1.4.10\build\native\AWSSDKCPP-Core.targets" Condition="Exists('..\..\packages\AWSSDKCPP-Core.1.4.10\build\native\AWSSDKCPP-Core.targets')" />
-    <Import Project="..\..\packages\AWSSDKCPP-CognitoIdentity.1.4.20140630.10\build\native\AWSSDKCPP-CognitoIdentity.targets" Condition="Exists('..\..\packages\AWSSDKCPP-CognitoIdentity.1.4.20140630.10\build\native\AWSSDKCPP-CognitoIdentity.targets')" />
-    <Import Project="..\..\packages\AWSSDKCPP-CognitoIdentityProvider.redist.1.4.20160418.10\build\native\AWSSDKCPP-CognitoIdentityProvider.redist.targets" Condition="Exists('..\..\packages\AWSSDKCPP-CognitoIdentityProvider.redist.1.4.20160418.10\build\native\AWSSDKCPP-CognitoIdentityProvider.redist.targets')" />
-    <Import Project="..\..\packages\AWSSDKCPP-CognitoIdentityProvider.1.4.20160418.10\build\native\AWSSDKCPP-CognitoIdentityProvider.targets" Condition="Exists('..\..\packages\AWSSDKCPP-CognitoIdentityProvider.1.4.20160418.10\build\native\AWSSDKCPP-CognitoIdentityProvider.targets')" />
-    <Import Project="..\..\packages\openssl-vc140-static-32_64.1.1.0\build\native\openssl-vc140-static-32_64.targets" Condition="Exists('..\..\packages\openssl-vc140-static-32_64.1.1.0\build\native\openssl-vc140-static-32_64.targets')" />
+    <Import Project="..\..\packages\AWSSDKCPP-CognitoIdentity.redist.1.6.20140630.25\build\native\AWSSDKCPP-CognitoIdentity.redist.targets" Condition="Exists('..\..\packages\AWSSDKCPP-CognitoIdentity.redist.1.6.20140630.25\build\native\AWSSDKCPP-CognitoIdentity.redist.targets')" />
+    <Import Project="..\..\packages\AWSSDKCPP-CognitoIdentityProvider.redist.1.6.20160418.25\build\native\AWSSDKCPP-CognitoIdentityProvider.redist.targets" Condition="Exists('..\..\packages\AWSSDKCPP-CognitoIdentityProvider.redist.1.6.20160418.25\build\native\AWSSDKCPP-CognitoIdentityProvider.redist.targets')" />
+    <Import Project="..\..\packages\AWSSDKCPP-Core.redist.1.6.25\build\native\AWSSDKCPP-Core.redist.targets" Condition="Exists('..\..\packages\AWSSDKCPP-Core.redist.1.6.25\build\native\AWSSDKCPP-Core.redist.targets')" />
+    <Import Project="..\..\packages\AWSSDKCPP-Core.1.6.25\build\native\AWSSDKCPP-Core.targets" Condition="Exists('..\..\packages\AWSSDKCPP-Core.1.6.25\build\native\AWSSDKCPP-Core.targets')" />
+    <Import Project="..\..\packages\AWSSDKCPP-CognitoIdentity.1.6.20140630.25\build\native\AWSSDKCPP-CognitoIdentity.targets" Condition="Exists('..\..\packages\AWSSDKCPP-CognitoIdentity.1.6.20140630.25\build\native\AWSSDKCPP-CognitoIdentity.targets')" />
+    <Import Project="..\..\packages\AWSSDKCPP-CognitoIdentityProvider.1.6.20160418.25\build\native\AWSSDKCPP-CognitoIdentityProvider.targets" Condition="Exists('..\..\packages\AWSSDKCPP-CognitoIdentityProvider.1.6.20160418.25\build\native\AWSSDKCPP-CognitoIdentityProvider.targets')" />
+    <Import Project="..\..\packages\openssl-vc140-static-32_64.1.1.1.1\build\native\openssl-vc140-static-32_64.targets" Condition="Exists('..\..\packages\openssl-vc140-static-32_64.1.1.1.1\build\native\openssl-vc140-static-32_64.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\..\packages\AWSSDKCPP-CognitoIdentity.redist.1.4.20140630.10\build\native\AWSSDKCPP-CognitoIdentity.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\AWSSDKCPP-CognitoIdentity.redist.1.4.20140630.10\build\native\AWSSDKCPP-CognitoIdentity.redist.targets'))" />
-    <Error Condition="!Exists('..\..\packages\AWSSDKCPP-Core.redist.1.4.10\build\native\AWSSDKCPP-Core.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\AWSSDKCPP-Core.redist.1.4.10\build\native\AWSSDKCPP-Core.redist.targets'))" />
-    <Error Condition="!Exists('..\..\packages\AWSSDKCPP-Core.1.4.10\build\native\AWSSDKCPP-Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\AWSSDKCPP-Core.1.4.10\build\native\AWSSDKCPP-Core.targets'))" />
-    <Error Condition="!Exists('..\..\packages\AWSSDKCPP-CognitoIdentity.1.4.20140630.10\build\native\AWSSDKCPP-CognitoIdentity.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\AWSSDKCPP-CognitoIdentity.1.4.20140630.10\build\native\AWSSDKCPP-CognitoIdentity.targets'))" />
-    <Error Condition="!Exists('..\..\packages\AWSSDKCPP-CognitoIdentityProvider.redist.1.4.20160418.10\build\native\AWSSDKCPP-CognitoIdentityProvider.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\AWSSDKCPP-CognitoIdentityProvider.redist.1.4.20160418.10\build\native\AWSSDKCPP-CognitoIdentityProvider.redist.targets'))" />
-    <Error Condition="!Exists('..\..\packages\AWSSDKCPP-CognitoIdentityProvider.1.4.20160418.10\build\native\AWSSDKCPP-CognitoIdentityProvider.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\AWSSDKCPP-CognitoIdentityProvider.1.4.20160418.10\build\native\AWSSDKCPP-CognitoIdentityProvider.targets'))" />
-    <Error Condition="!Exists('..\..\packages\openssl-vc140-static-32_64.1.1.0\build\native\openssl-vc140-static-32_64.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\openssl-vc140-static-32_64.1.1.0\build\native\openssl-vc140-static-32_64.targets'))" />
+    <Error Condition="!Exists('..\..\packages\AWSSDKCPP-CognitoIdentity.redist.1.6.20140630.25\build\native\AWSSDKCPP-CognitoIdentity.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\AWSSDKCPP-CognitoIdentity.redist.1.6.20140630.25\build\native\AWSSDKCPP-CognitoIdentity.redist.targets'))" />
+    <Error Condition="!Exists('..\..\packages\AWSSDKCPP-CognitoIdentityProvider.redist.1.6.20160418.25\build\native\AWSSDKCPP-CognitoIdentityProvider.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\AWSSDKCPP-CognitoIdentityProvider.redist.1.6.20160418.25\build\native\AWSSDKCPP-CognitoIdentityProvider.redist.targets'))" />
+    <Error Condition="!Exists('..\..\packages\AWSSDKCPP-Core.redist.1.6.25\build\native\AWSSDKCPP-Core.redist.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\AWSSDKCPP-Core.redist.1.6.25\build\native\AWSSDKCPP-Core.redist.targets'))" />
+    <Error Condition="!Exists('..\..\packages\AWSSDKCPP-Core.1.6.25\build\native\AWSSDKCPP-Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\AWSSDKCPP-Core.1.6.25\build\native\AWSSDKCPP-Core.targets'))" />
+    <Error Condition="!Exists('..\..\packages\AWSSDKCPP-CognitoIdentity.1.6.20140630.25\build\native\AWSSDKCPP-CognitoIdentity.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\AWSSDKCPP-CognitoIdentity.1.6.20140630.25\build\native\AWSSDKCPP-CognitoIdentity.targets'))" />
+    <Error Condition="!Exists('..\..\packages\AWSSDKCPP-CognitoIdentityProvider.1.6.20160418.25\build\native\AWSSDKCPP-CognitoIdentityProvider.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\AWSSDKCPP-CognitoIdentityProvider.1.6.20160418.25\build\native\AWSSDKCPP-CognitoIdentityProvider.targets'))" />
+    <Error Condition="!Exists('..\..\packages\openssl-vc140-static-32_64.1.1.1.1\build\native\openssl-vc140-static-32_64.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\openssl-vc140-static-32_64.1.1.1.1\build\native\openssl-vc140-static-32_64.targets'))" />
   </Target>
 </Project>

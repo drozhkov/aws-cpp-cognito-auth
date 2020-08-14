@@ -18,3 +18,6 @@ src/aws-cpp-cognito-auth/CMakeCache.txt
 src/aws-cpp-cognito-auth/libawspp.a
 src/aws-cpp-cognito-auth/libaws-cpp-cognito-auth.a
 .vs
+/src/aws-cpp-cognito-auth-demo/aws-cpp-cognito-auth-demo.vcxproj.user
+/src/aws-cpp-cognito-auth/aws-cpp-cognito-auth.vcxproj.user
+/x64/

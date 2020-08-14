@@ -1,26 +1,26 @@
 /*
-* MIT License
-*
-* Copyright (c) 2018 Denis Rozhkov <denis@rozhkoff.com>
-*
-* Permission is hereby granted, free of charge, to any person obtaining a copy
-* of this software and associated documentation files (the "Software"), to deal
-* in the Software without restriction, including without limitation the rights
-* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-* copies of the Software, and to permit persons to whom the Software is
-* furnished to do so, subject to the following conditions:
-*
-* The above copyright notice and this permission notice shall be included in all
-* copies or substantial portions of the Software.
-*
-* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-* AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-* LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-* OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-* SOFTWARE.
-*/
+ * MIT License
+ *
+ * Copyright (c) 2018 Denis Rozhkov <denis@rozhkoff.com>
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 
 #ifndef __AWS_CPP_COGNITO_AUTH_BIGNUMBER_H
 #define __AWS_CPP_COGNITO_AUTH_BIGNUMBER_H
@@ -64,7 +64,7 @@ namespace awsx {
 	protected:
 		void free()
 		{
-			if (m_ptr != nullptr) {
+			if ( m_ptr != nullptr ) {
 				OPENSSL_free( m_ptr );
 				m_ptr = nullptr;
 			}
@@ -117,17 +117,24 @@ namespace awsx {
 			BN_rand( m_value, bits, top, bottom );
 		}
 
-		void mod( const BigNumber & m, const BigNumber & d, BigNumberContext & context )
+		void mod( const BigNumber & m,
+			const BigNumber & d,
+			BigNumberContext & context )
 		{
 			BN_mod( m_value, m.get(), d.get(), context.get() );
 		}
 
-		void modExp( const BigNumber & a, const BigNumber & p, const BigNumber & m, BigNumberContext & context )
+		void modExp( const BigNumber & a,
+			const BigNumber & p,
+			const BigNumber & m,
+			BigNumberContext & context )
 		{
 			BN_mod_exp( m_value, a.get(), p.get(), m.get(), context.get() );
 		}
 
-		void mul( const BigNumber & a, const BigNumber & b, BigNumberContext & context )
+		void mul( const BigNumber & a,
+			const BigNumber & b,
+			BigNumberContext & context )
 		{
 			BN_mul( m_value, a.get(), b.get(), context.get() );
 		}
@@ -154,7 +161,7 @@ namespace awsx {
 
 		void fromBin( const std::vector<uint8_t> & bin )
 		{
-			BN_bin2bn( bin.data(), static_cast<int>(bin.size()), m_value );
+			BN_bin2bn( bin.data(), static_cast<int>( bin.size() ), m_value );
 		}
 
 		BIGNUM * get() const
@@ -163,7 +170,7 @@ namespace awsx {
 		}
 	};
 
-}
+} // namespace awsx
 
 
 #endif

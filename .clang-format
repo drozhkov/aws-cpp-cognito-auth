@@ -1,0 +1,35 @@
+IndentWidth: 4
+TabWidth: 4
+
+BasedOnStyle: LLVM
+
+Language: Cpp
+
+BreakBeforeBraces: Custom
+BraceWrapping:
+ AfterStruct: false
+ AfterClass: false
+ AfterControlStatement: false
+ AfterFunction: true
+ BeforeCatch: true
+ BeforeElse: true
+
+PointerAlignment: Middle
+SpacesInParentheses: true
+UseTab: Always
+MaxEmptyLinesToKeep: 2
+AllowShortBlocksOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+BreakConstructorInitializers: BeforeComma
+NamespaceIndentation: All
+AccessModifierOffset: -4
+AlignAfterOpenBracket: DontAlign
+BinPackArguments: false
+BinPackParameters: false
+ContinuationIndentWidth: 4
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+AlignOperands: true
+AlwaysBreakBeforeMultilineStrings: true
+BreakBeforeBinaryOperators: All
+IndentCaseLabels: true
